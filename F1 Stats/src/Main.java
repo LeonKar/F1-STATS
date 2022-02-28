@@ -37,12 +37,12 @@ public class Main {
 			System.out.println("1)Option 1\n2)Option 2");
 		try {
 			option = sc.nextInt();
-			if((option>0)&&(option<3)) {
-				
-			}else {
+			if((option<1)||(option>3)) {
 				System.out.println("No existe opcion");
 				System.out.println("Introduzca de nuevo:");
 				option = sc.nextInt();
+			}else {
+				
 			}
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
@@ -63,12 +63,12 @@ public class Main {
 			System.out.println("1)Option 1\n2)Option 2");
 			try {
 				option = sc.nextInt();
-				if((option>0)&&(option<3)) {
-					
-				}else {
+				if((option<1)||(option>3)) {
 					System.out.println("No existe opcion");
 					System.out.println("Introduzca de nuevo:");
 					option = sc.nextInt();
+				}else {
+					
 				}
 			} catch (Exception e) {
 				// TODO Auto-generated catch block
