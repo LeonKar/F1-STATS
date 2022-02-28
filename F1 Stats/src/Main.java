@@ -12,6 +12,8 @@ public class Main {
 		check = login(login, password);
 		if(check.equals("error")) {
 			System.out.println("Login o contraseña incorrecto");
+		}else {
+			menu(check);
 		}
 	}
 	
@@ -19,9 +21,20 @@ public class Main {
 		String check="error";
 		if(login.equals("admin")&&password.equals("1234")) {
 			System.out.println("Hola admin");
-		}else if(login.equals("user1")&&password.equals("password1")){
+			check="admin";
+		}else if(login.equals("user1")&&password.equals("psswd1")){
 			System.out.println("Hola " + login);
+			check="user";
 		}
 		return check;
+	}
+	
+	public static void menu(String check) {
+		System.out.println("Eliga opcion de menu:");
+		if(check=="admin") {
+			
+		}else if(check=="user") {
+			
+		}
 	}
 }
