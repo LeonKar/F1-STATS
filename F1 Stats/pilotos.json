@@ -1,0 +1,22 @@
+{
+	"pilotos":[
+	
+	{"numero":"1",
+	"nombre":"Max VERSTAPPEN",
+	"equipo":"Oracle Red Bull Racing",
+	"chasis":"Red Bull RB18",
+	"motor":"Red Bull V6 t h"},
+	
+	{"numero":"3",
+	"nombre":"Daniel RICCIARDO",
+	"equipo":"McLaren F1 Team",
+	"chasis":"McLaren MCL36",
+	"motor":"Mercedes V6 t h"},
+	
+	{"numero":"4",
+	"nombre":"Lando NORRIS",
+	"equipo":"McLaren F1 Team",
+	"chasis":"McLaren MCL36",
+	"motor":"Mercedes V6 t h"}
+	]
+}
