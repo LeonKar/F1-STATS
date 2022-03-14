@@ -2,5 +2,10 @@
 <classpath>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-1.8"/>
 	<classpathentry kind="src" path="src"/>
+	<classpathentry kind="lib" path="C:/Users/Leon/Documents/GitHub/F1-STATS/F1 Stats/json-simple-1.1.1.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Leon/Documents/GitHub/F1-STATS/F1 Stats/gson-2.8.2.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Leon/Documents/GitHub/F1-STATS/F1 Stats/jackson-annotations-2.13.2.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Leon/Documents/GitHub/F1-STATS/F1 Stats/jackson-core-2.13.2.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Leon/Documents/GitHub/F1-STATS/F1 Stats/jackson-databind-2.13.2.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
