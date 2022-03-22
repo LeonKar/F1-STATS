@@ -3,10 +3,13 @@ import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 import java.io.Reader;
+import java.net.URL;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.InputMismatchException;
+import java.util.List;
 import java.util.Scanner;
 
 import org.json.simple.JSONObject;
@@ -161,13 +164,12 @@ public class Main {
 			System.out.println("1. Editar el perfil de usuario");
             System.out.println("2. Ver lista de pilotos");
             System.out.println("3. Ver lista de carreras GP");
-            System.out.println("4. Ver calendario");
-            System.out.println("5. Clasificación del campeonato de constructores");
-            System.out.println("6. Ver caracteristicas tecnicas de los coches");
-            System.out.println("7. Mejores tiempos por circuito de cada piloto");
-            System.out.println("8. Ultimos resultados");
-            System.out.println("9. Comparativa entre pilotos");
-            System.out.println("10. Simulación de puntos");
+            System.out.println("4. Clasificación del campeonato de constructores");
+            System.out.println("5. Ver caracteristicas tecnicas de los coches");
+            System.out.println("6. Mejores tiempos por circuito de cada piloto");
+            System.out.println("7. Ultimos resultados");
+            System.out.println("8. Comparativa entre pilotos");
+            System.out.println("9. Simulación de puntos");
             try {
  
                 System.out.println("Escribe una de las opciones");
@@ -184,7 +186,7 @@ public class Main {
                         break;
                         
                     case 3:
-                        System.out.println("Has seleccionado la opcion 3");
+                    	verCarrerasGP();
                         cont=true;
                         break;
                     default:
@@ -195,6 +197,29 @@ public class Main {
                 sc.next();
             }
         }while(cont!=true);
+	}
+
+	private static void verCarrerasGP() {
+		// TODO Auto-generated method stub
+		System.out.println("\nLista de carreras GP:\n");
+		try {
+			JsonNode root = mapper.readTree(new File("lista_carreras_gp.json"));
+			JsonNode contactNode = root.path("lista_GP");
+            if (contactNode.isArray()) {
+                for (JsonNode node : contactNode) {
+                	String nombre_circuito = node.path("nombre_circuito").asText();
+                    String lugar = node.path("lugar").asText();
+                    String distancia = node.path("distancia").asText();
+                    String fecha = node.path("fecha").asText();
+                    System.out.println("\tNombre circuito: " + nombre_circuito + ", lugar: " + lugar + ", distancia: " +
+                    		distancia + ", fecha: " + fecha);
+                	
+                }
+            }
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 
 	private static void verPilotos() {

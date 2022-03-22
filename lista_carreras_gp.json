@@ -1,0 +1,118 @@
+{
+	"lista_GP":[
+	
+	{"nombre_circuito":"Sakhir",
+	"lugar":"Barhein",
+	"distancia":"6299 m",
+	"fecha":"18/03-20/03"
+	},
+{"nombre_circuito":"Jeddah International Street Circuit",
+	"lugar":"Arabia Saudi",
+	"distancia":"5154 m",
+	"fecha":"25/03-27/03"
+	},
+{"nombre_circuito":"Albert Park",
+	"lugar":"Australia",
+	"distancia":"5303 m",
+	"fecha":"8/04-10/04"
+	},
+{"nombre_circuito":"Imola",
+	"lugar":"Emilia Romana",
+	"distancia":"4909 m",
+	"fecha":"22/04-24/04"
+	},
+{"nombre_circuito":"Hard Rock Stadium Circuit",
+	"lugar":"Miami",
+	"distancia":"5041 m",
+	"fecha":"6/05-8/05"
+	},
+{"nombre_circuito":"Catalunya",
+	"lugar":"España",
+	"distancia":"4627 m",
+	"fecha":"20/05-22/05"
+	},
+{"nombre_circuito":"Montecarlo",
+	"lugar":"Mónaco",
+	"distancia":"3340 m",
+	"fecha":"27/05-29/05"
+	},
+{"nombre_circuito":"Baku City Circuit",
+	"lugar":"Azerbaiyan",
+	"distancia":"6003 m",
+	"fecha":"10/06-12/06"
+	},
+{"nombre_circuito":"Gilles Villenueve",
+	"lugar":"Canada",
+	"distancia":"4661 m",
+	"fecha":"17/06-19/06"
+	},
+{"nombre_circuito":"Silverstone",
+	"lugar":"Gran Bretaña",
+	"distancia":"5141 m",
+	"fecha":"1/07-3/07"
+	},
+{"nombre_circuito":"Red Bull Ring",
+	"lugar":"Austria",
+	"distancia":"4326 m",
+	"fecha":"8/07-10/07"
+	},
+{"nombre_circuito":"Paul Ricard",
+	"lugar":"Francia",
+	"distancia":"5842 m",
+	"fecha":"22/07-24/07"
+	},
+{"nombre_circuito":"Hungaroring",
+	"lugar":"Hungria",
+	"distancia":"4381 m",
+	"fecha":"29/07-31/07"
+	},
+{"nombre_circuito":"Spa-Francorchamps",
+	"lugar":"Belgica",
+	"distancia":"7004 m",
+	"fecha":"26/08-28/08"
+	},
+{"nombre_circuito":"Zandvoort",
+	"lugar":"Países Bajos",
+	"distancia":"4307 m",
+	"fecha":"02/09-04/09"
+	},
+{"nombre_circuito":"Monza",
+	"lugar":"Italia",
+	"distancia":"5793 m",
+	"fecha":"09/09-11/09"
+	},
+{"nombre_circuito":"Marina Bay",
+	"lugar":"Singapur",
+	"distancia":"5067 m",
+	"fecha":"30/09-02/10"
+	},
+{"nombre_circuito":"Suzuka",
+	"lugar":"Japón",
+	"distancia":"5807 m",
+	"fecha":"07/10-09/10"
+	},
+{"nombre_circuito":"Las Americas",
+	"lugar":"Estados Unidos",
+	"distancia":"5516 m",
+	"fecha":"21/10-23/10"
+	},
+{"nombre_circuito":"Hermanos Rodriguez",
+	"lugar":"Mexico",
+	"distancia":"4304 m",
+	"fecha":"28/10-30/10"
+	},
+{"nombre_circuito":"Interlagos",
+	"lugar":"Brasil",
+	"distancia":"4309 m",
+	"fecha":"11/11-13/11"
+	},
+{"nombre_circuito":"Yas Marina",
+	"lugar":"Abuu Dhabi",
+	"distancia":"5554 m",
+	"fecha":"18/11-20/11"
+	},
+
+	
+	
+	]
+}
