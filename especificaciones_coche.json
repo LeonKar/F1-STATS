@@ -1,0 +1,109 @@
+{
+	"EspecificacionesCoche":[
+	
+	{"Nombre":"SF21 (ferrari)",
+	"Motor" : "065/6"
+	"Peso":"752kg",
+	"Carroceria":"De fibra de carbono que lleva un halo para la proteccion del piloto"
+	"Frenos" : "Frenos de disco ventilados con fibra de carbono delante y detras" 
+	"Caja de cambios" : "Cuenta con 8 velociadades"
+	"Suspension delantera" : " push-rod"
+	"Suspension trasera" : "pull-rod"
+	"Ruedas" : " Llantas de 18 pulgadas" },
+	
+	{"Nombre":"C41 (Alfa romeo)",
+	"Motor" : "Motor ferrari "
+	"Peso":"746kg",
+	"Carroceria":"De fibra de carbono que lleva un halo para la proteccion del piloto"
+	"Frenos" : "Frenos de disco ventilados con fibra de carbono delante y detras" 
+	"Caja de cambios" : "Cuenta con 8 velociadades"
+	"Suspension delantera" : " Doble horquilla, resorte interior y amortiguadores Multimatics accionados por varillas de empuje"
+	"Suspension trasera" : "Multibrazo, suspensión hidráulica interior accionada por varillas"
+	"Ruedas" : " Llantas de 18 pulgadas" },
+	
+	{"Nombre":"MCL36M (McLaren)",
+	"Motor" : " Mercedes-AMG M12 E Performance "
+	"Peso":"1263kg",
+	"Carroceria":"De fibra de carbono que lleva un halo para la proteccion del piloto"
+	"Frenos" : "sistema dual separado, con pinzas de 6 pistones delante y detrás; sistema de control de freno trasero "Brake by wire" (por cable); discos ventilados y pastillas de carbono-carbono" 
+	"Caja de cambios" : "Cuenta con 8 velociadades"
+	"Suspension delantera" : " push-rod"
+	"Suspension trasera" : "pull-rod"
+	"Ruedas" : " Llantas de 18 pulgadas" },
+	
+	 {"Nombre":"W13 (Mercedes)",
+	"Motor" : " Mercedes-AMG M12 E Performance"
+	"Peso":"793kg",
+	"Carroceria":"De fibra de carbono que lleva un halo para la proteccion del piloto"
+	"Frenos" : "Frenos de disco ventilados con fibra de carbono delante y detras" 
+	"Caja de cambios" : "Cuenta con 8 velociadades"
+	"Suspension delantera" : " push-rod"
+	"Suspension trasera" : "pull-rod"
+	"Ruedas" : " Llantas de 18 pulgadas" },
+	
+	 {"Nombre":"AMR21 (Aston Martin)",
+	"Motor" : " Mercedes-AMG M12 E Performance"
+	"Peso":"793kg",
+	"Carroceria":"De fibra de carbono que lleva un halo para la proteccion del piloto"
+	"Frenos" : "Frenos de disco ventilados con fibra de carbono delante y detras" 
+	"Caja de cambios" : "Cuenta con 8 velociadades"
+	"Suspension delantera" : " push-rod"
+	"Suspension trasera" : "pull-rod"
+	"Ruedas" : " Llantas de 18 pulgadas" },
+	
+	{"Nombre":"FW44 (Williams racing)",
+	"Motor" : " Mercedes-AMG M12 E Performance",
+	"Peso":"793kg",
+	"Carroceria":"De fibra de carbono que lleva un halo para la proteccion del piloto",
+	"Frenos" : "Frenos de disco ventilados con fibra de carbono delante y detras" ,
+	"Caja de cambios" : "Cuenta con 8 velociadades",
+	"Suspension delantera" : " push-rod",
+	"Suspension trasera" : "pull-rod",
+	"Ruedas" : " Llantas de 18 pulgadas" },
+	
+	{"Nombre":" VF-22 (Hass)",
+	"Motor" : " Ferrari",
+	"Peso":"803kg",
+	"Carroceria":"De fibra de carbono que lleva un halo para la proteccion del piloto",
+	"Frenos" : "Frenos de disco ventilados con fibra de carbono delante y detras" ,
+	"Caja de cambios" : "Cuenta con 8 velociadades",
+	"Suspension delantera" : " push-rod",
+	"Suspension trasera" : "pull-rod",
+	"Ruedas" : " Llantas de 18 pulgadas" },
+	
+	{"Nombre":"AT03 (Alpha tauri)",
+	"Motor" : " Red Bull Powertrains",
+	"Peso":"793kg",
+	"Carroceria":"De fibra de carbono que lleva un halo para la proteccion del piloto",
+	"Frenos" : "Frenos de disco ventilados con fibra de carbono delante y detras" ,
+	"Caja de cambios" : "Cuenta con 8 velociadades",
+	"Suspension delantera" : " push-rod",
+	"Suspension trasera" : "pull-rod",
+	"Ruedas" : " Llantas de 18 pulgadas" },
+	
+	{"Nombre":"RB18 (Red bull racing )",
+	"Motor" : " Honda",
+	"Peso":"795kg",
+	"Carroceria":"De fibra de carbono que lleva un halo para la proteccion del piloto",
+	"Frenos" : "Frenos de disco ventilados con fibra de carbono delante y detras" ,
+	"Caja de cambios" : "Cuenta con 8 velociadades",
+	"Suspension delantera" : " push-rod",
+	"Suspension trasera" : "pull-rod",
+	"Ruedas" : " Llantas de 18 pulgadas" },
+	
+	{"Nombre":"A552 (Alpine)",
+	"Motor" : " Renault E-Tech 2022",
+	"Peso":"795kg",
+	"Carroceria":"De fibra de carbono que lleva un halo para la proteccion del piloto",
+	"Frenos" : "Frenos de disco ventilados con fibra de carbono delante y detras" ,
+	"Caja de cambios" : "Cuenta con 8 velociadades",
+	"Suspension delantera" : " push-rod",
+	"Suspension trasera" : "pull-rod",
+	"Ruedas" : " Llantas de 18 pulgadas" },
+	
+	
+	
+	
+	
+	]
+}

@@ -1,0 +1,137 @@
+{
+"Mejores_tiempos":[
+	
+	{"nombre_circuito":"Sakhir",
+	"Piloto":"Lewis Hamilton",
+	"Tiempo":"1:27.264 ",
+	"Año":"2020"
+	},
+	
+	{"nombre_circuito":"Jeddah International Street Circuit",
+	"Piloto":"Lewis Hamilton",
+	"Tiempo":"01:29.786",
+	"Año":"2021"
+	},
+	
+	{"nombre_circuito":" Albert Park",
+	"Piloto":" Michael Schumacher",
+	"Tiempo":"1:24.125",
+	"Año":"2004"
+	},
+	
+	{"nombre_circuito":"Imola",
+	"Piloto":"Lewis Hamilton",
+	"Tiempo":"01:15.484",
+	"Año":"2020"
+	},
+	
+	{"nombre_circuito":"Hard Rock Stadium (nuevo circuito)",
+	"Piloto":"",
+	"Tiempo":"",
+	"Año":""
+	},
+	
+	{"nombre_circuito":" Catalunya",
+	"Piloto":"Lewis Hamilton",
+	"Tiempo":"1:18.149 ",
+	"Año":"2021"
+	},
+	
+	{"nombre_circuito":"Montecarlo",
+	"Piloto":"Lewis Hamilton",
+	"Tiempo":"1:12.909",
+	"Año":"2021"
+	},
+	
+	{"nombre_circuito":" Baku City Circuit",
+	"Piloto":"Charles Leclerc",
+	"Tiempo":"1:43.009",
+	"Año":"2019"
+	},
+	
+	{"nombre_circuito":"Gilles Villeneuve",
+	"Piloto":"Valtteri Bottas",
+	"Tiempo":"1:13.078",
+	"Año":"2019"
+	},
+	
+	{"nombre_circuito":"Silverstone",
+	"Piloto":"Max Verstappen",
+	"Tiempo":"1:27.097 ",
+	"Año":"2020"
+	},
+	
+	{"nombre_circuito":" Red Bull Ring",
+	"Piloto":"Carlos Sainz",
+	"Tiempo":"1:05.619",
+	"Año":"2020"
+	},
+	
+	{"nombre_circuito":" Paul Ricard",
+	"Piloto":"Sebastian Vettel",
+	"Tiempo":"1:32:740",
+	"Año":"2019"
+	},
+	
+	{"nombre_circuito":" Hungaroring",
+	"Piloto":"Lewis Hamilton",
+	"Tiempo":"1:16.627",
+	"Año":"2020"
+	},
+	
+	{"nombre_circuito":" Spa-Francorchamps",
+	"Piloto":"Valtteri Bottas",
+	"Tiempo":"1:46.286",
+	"Año":"2018"
+	},
+	
+	{"nombre_circuito":" Zandvoort",
+	"Piloto":"Max Verstappen",
+	"Tiempo":"01:08.885",
+	"Año":"2021"
+	},
+	
+	{"nombre_circuito":"Monza",
+	"Piloto":"Barrichello",
+	"Tiempo":"1:21.046",
+	"Año":"2004"
+	},
+	
+	{"nombre_circuito":"Marina Bay",
+	"Piloto":"Kevin Magnussen",
+	"Tiempo":"1:41.905",
+	"Año":"2015"
+	},
+	
+	{"nombre_circuito":"Suzuka",
+	"Piloto":"Lewis Hamilton",
+	"Tiempo":"1:30.983",
+	"Año":"2019"
+	},
+	
+	{"nombre_circuito":"Las Américas",
+	"Piloto":"Charles Leclerc",
+	"Tiempo":"1:36.169",
+	"Año":"2019"
+	},
+	
+	{"nombre_circuito":"Hermanos Rodríguez",
+	"Piloto":"Valtteri Bottas",
+	"Tiempo":"1:18.741",
+	"Año":"2018"
+	},
+	
+	{"nombre_circuito":"Interlagos",
+	"Piloto":"Valtteri Bottas",
+	"Tiempo":"1:10.540",
+	"Año":"2018"
+	},
+	
+	{"nombre_circuito":"Yas Marina",
+	"Piloto":"Lewis Hamilton",
+	"Tiempo":"1:39.283 ",
+	"Año":"2019"
+	},
+	
+  ]
+}
