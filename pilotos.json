@@ -1,6 +1,4 @@
-{
-	"pilotos":[
-	
+[	
 	{"numero":"1",
 	"nombre":"Max VERSTAPPEN",
 	"equipo":"Oracle Red Bull Racing",
@@ -127,4 +125,3 @@
 	"edad": "26",
 	"campeonatos_ganados": "0"}
 	]
-}

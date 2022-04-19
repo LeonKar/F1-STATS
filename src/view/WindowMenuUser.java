@@ -9,11 +9,18 @@ import java.awt.Font;
 import javax.swing.SwingConstants;
 import javax.swing.table.DefaultTableModel;
 
+import org.json.simple.JSONArray;
+import org.json.simple.JSONObject;
+import org.json.simple.parser.JSONParser;
+import org.json.simple.parser.ParseException;
+
 import control.Connection;
 
 import javax.swing.JSeparator;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
 import java.io.IOException;
 
 import javax.swing.JScrollPane;
@@ -487,42 +494,104 @@ public class WindowMenuUser extends JFrame{
 		panel_2.setBounds(0, 0, 515, 561);
 	}
 	public void tablaPilotos() {
+		JSONObject obj = new JSONObject();
+		JSONArray jrr = new JSONArray();
+		Object ob = null;
+		JSONParser jp = new JSONParser();
 		
-		String[] columns = {"Nombre", "Equipo", "Nacionalidad", "Fecha nacimiento", "Campeonatos ganados"};
+		try {
+			FileReader file = new FileReader("pilotos.json");
+			ob = jp.parse(file);
+			jrr=(JSONArray) ob;
+			file.close();
+		} catch (ParseException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (FileNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		int size = jrr.size();
+		
 		DefaultTableModel model = new DefaultTableModel();
 		tablePilotos.setModel(model);
-				//"SELECT numero, nombre, equipo, nacionalidad, fecha_nacim, campeonatos_ganados FROM PILOTOS");
-		int cantidad = 10;
 		
 		model.addColumn("Numero");
 		model.addColumn("Nombre");
 		model.addColumn("Equipo");
 		model.addColumn("Nacionalidad");
-		model.addColumn("Fecha nacimiento");
+		model.addColumn("Edad");
 		model.addColumn("Campeonatos ganados");
-		//while(rs.next()){
-			Object [] filas = new Object[cantidad];
-			for(int i = 1; i <= cantidad; i++) {
-				//filas[i-1] = rs.getObject(i);
+		
+		Object [] filas = new Object[size];
+		
+		for(int i=0; i<size; i++) {
+			JSONObject row = (JSONObject) jrr.get(i);
+			String name = (String) row.get("numero");
+			String nombre = (String) row.get("nombre");
+			String equipo = (String) row.get("equipo");
+			String nacionalidad = (String) row.get("nacionalidad");
+			String edad = (String) row.get("edad");
+			String campeonatos_ganados = (String) row.get("campeonatos_ganados");
+			filas[0] = name;
+			filas[1] = nombre;
+			filas[2] = equipo;
+			filas[3] = nacionalidad;
+			filas[4] = edad;
+			filas[5] = campeonatos_ganados;
 			model.addRow(filas);
 		}
 	}
 	public void tablaCarreras() {
+		JSONObject obj = new JSONObject();
+		JSONArray jrr = new JSONArray();
+		Object ob = null;
+		JSONParser jp = new JSONParser();
+		
+		try {
+			FileReader file = new FileReader("lista_carreras_gp.json");
+			ob = jp.parse(file);
+			jrr=(JSONArray) ob;
+			file.close();
+		} catch (ParseException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (FileNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		int size = jrr.size();
+		
 		DefaultTableModel model = new DefaultTableModel();
 		tableCarreras.setModel(model);
-		//"SELECT nombre_circuito, lugar, distancia, fecha FROM carreras_gp");
-		int cantidad = 10;
 		
 		model.addColumn("Nombre circuito");
 		model.addColumn("Lugar");
 		model.addColumn("Distancia");
 		model.addColumn("Fecha");
-		//while(rs.next()){
-			Object [] filas = new Object[cantidad];
-			for(int i = 1; i <= cantidad; i++) {
-				//filas[i-1] = rs.getObject(i);
-			}	
+		
+		Object [] filas = new Object[size];
+		
+		for(int i=0; i<size; i++) {
+			JSONObject row = (JSONObject) jrr.get(i);
+			String nombre_circuito = (String) row.get("nombre_circuito");
+			String lugar = (String) row.get("lugar");
+			String distancia = (String) row.get("distancia");
+			String fecha = (String) row.get("fecha");
+			filas[0] = nombre_circuito;
+			filas[1] = lugar;
+			filas[2] = distancia;
+			filas[3] = fecha;
 			model.addRow(filas);
+		}
 	}
 	public void consultPerfil() {
 		txtNombre.setText("TU NOMBRE");

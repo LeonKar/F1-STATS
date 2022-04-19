@@ -1,6 +1,4 @@
-{
-	"lista_GP":[
-	
+[
 	{"nombre_circuito":"Sakhir",
 	"lugar":"Barhein",
 	"distancia":"6299 m",
@@ -112,4 +110,3 @@
 		"fecha":"18/11-20/11"
 		}
 	]
-}
