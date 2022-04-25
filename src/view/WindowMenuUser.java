@@ -15,12 +15,14 @@ import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
 
 import control.Connection;
+import control.Main;
 
 import javax.swing.JSeparator;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
+import java.io.FileWriter;
 import java.io.IOException;
 
 import javax.swing.JScrollPane;
@@ -37,7 +39,7 @@ public class WindowMenuUser extends JFrame{
 	JPanel panelTableCarreras;
 	JPanel panelPerfilUsuario;
 	JComboBox comboBox;
-	String []cmbxSexo = {"ALIEN", "HOMBRE", "MUJER"};
+	String []cmbxSexo = {"HOMBRE", "MUJER"};
 	String nombre;
 	private JTable tablePilotos;
 	private JTable tableCarreras;
@@ -275,6 +277,38 @@ public class WindowMenuUser extends JFrame{
 		});
 		scrollPanePilotos.setViewportView(tablePilotos);
 		
+		JPanel panelResultados = new JPanel();
+		panelResultados.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseEntered(MouseEvent e) {
+				panelResultados.setBackground(new Color(20, 101, 193));
+			}
+			@Override
+			public void mouseExited(MouseEvent e) {
+				panelResultados.setBackground(new Color(20, 91, 173));
+			}
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				panelMultiple.removeAll();
+				panelMultiple.repaint();
+				panelMultiple.revalidate(); 
+				panelTablePilotos.setVisible(true);
+				panelMultiple.add(panelTablePilotos);
+				tablaResultados();
+			}
+		});
+		panelResultados.setLayout(null);
+		panelResultados.setBackground(new Color(20, 91, 173));
+		panelResultados.setBounds(10, 171, 170, 44);
+		panelTablePilotos.add(panelResultados);
+		
+		JLabel lblResultados = new JLabel("RESULTADOS");
+		lblResultados.setHorizontalAlignment(SwingConstants.CENTER);
+		lblResultados.setForeground(Color.WHITE);
+		lblResultados.setFont(new Font("Ebrima", Font.BOLD, 16));
+		lblResultados.setBounds(0, 0, 170, 44);
+		panelResultados.add(lblResultados);
+		
 		panelTableCarreras = new JPanel();
 		panelTableCarreras.setBounds(0, 0, 515, 561);
 		panelMultiple.add(panelTableCarreras);
@@ -465,6 +499,50 @@ public class WindowMenuUser extends JFrame{
 			}
 			@Override
 			public void mouseClicked(MouseEvent e) {
+				JSONObject obj = new JSONObject();
+				JSONArray jrr = new JSONArray();
+				JSONArray jrr2 = new JSONArray();
+				JSONParser jp = new JSONParser();
+				
+				try {
+					FileReader file = new FileReader("perfil.json");
+					jrr =  (JSONArray)jp.parse(file);
+				} catch (ParseException | IOException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
+				
+				int size = jrr.size();
+				for(int i=0; i<size; i++) {
+					JSONObject row = (JSONObject) jrr.get(i);
+					String nick = (String) row.get("nick");
+					if(nick!=null) {
+						if(nick.equals(Main.nickname)) {
+						jrr.remove(i);
+						}
+					}
+				}
+				obj.put("nickname", Main.nickname);
+				obj.put("nombre", txtNombre.getText());
+				obj.put("apellido", txtApellido.getText());
+				System.out.println(comboBox.getSelectedItem());
+				if(comboBox.getSelectedItem().equals("HOMBRE")) {
+					obj.put("sexo", "hombre");
+				}else if(comboBox.getSelectedItem().equals("MUJER")){
+					obj.put("sexo", "mujer");
+				}
+				obj.put("correo", txtCorreo.getText());
+				obj.put("fecha_nacim", txtFechaN.getText());
+				jrr.add(obj);
+				
+				try {
+					FileWriter file = new FileWriter("perfil.json");
+					file.write(jrr.toJSONString());
+					file.close();
+				} catch (IOException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
 			}
 		});
 		panelGuardar.setLayout(null);
@@ -598,18 +676,121 @@ public class WindowMenuUser extends JFrame{
 		txtApellido.setText("TU APELLIDO");
 		txtCorreo.setText("TU CORREO");
 		txtFechaN.setText("dd/mm/yyyy");
-		//"SELECT nombre, apellido, correo, fecha_nacim, sexo from user where usersid = " + Connection.idUser);
-		//while(rs.next()){
-		/*
-			txtNombre.setText(rs.getString("nombre"));
-			txtApellido.setText(rs.getString("apellido"));
-			txtCorreo.setText(rs.getString("correo"));
-			txtFechaN.setText(rs.getString("fecha_nacim"));
-			if(rs.getString("sexo").equals("hombre")) {
-				comboBox.setSelectedIndex(1);
-			}else {
-				comboBox.setSelectedIndex(2);
+		
+		JSONObject obj = new JSONObject();
+		JSONArray jrr = new JSONArray();
+		JSONParser jp = new JSONParser();
+		
+		try {
+			FileReader file = new FileReader("perfil.json");
+			jrr =  (JSONArray)jp.parse(file);
+		} catch (ParseException | IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		int size = jrr.size();
+		
+		for(int i=0; i<size; i++) {
+			JSONObject row = (JSONObject) jrr.get(i);
+			String name = (String) row.get("nickname");
+			System.out.println("N " + name + "MN" + Main.nickname);
+			if(name.equals(Main.nickname)) {
+				String nameU = (String) row.get("nombre");
+				String apellidoU = (String) row.get("apellido");
+				String sexo = (String) row.get("sexo");
+				String correoU = (String) row.get("correo");
+				String fecha_nacimU = (String) row.get("fecha_nacim");
+				txtNombre.setText(nameU);
+				txtApellido.setText(apellidoU);
+				if(sexo.equals("mujer")) {
+					comboBox.setSelectedIndex(1);
+				}else {
+					comboBox.setSelectedIndex(0);
+				}
+				txtCorreo.setText(correoU);
+				txtFechaN.setText(fecha_nacimU);
 			}
-			*/
+		}
+	}
+
+	public void tablaResultados() {
+		JSONObject obj = new JSONObject();
+		JSONArray jrr = new JSONArray();
+		Object ob = null;
+		JSONParser jp = new JSONParser();
+		
+		try {
+			FileReader file = new FileReader("ultimos_resultados.json");
+			ob = jp.parse(file);
+			jrr=(JSONArray) ob;
+			file.close();
+		} catch (ParseException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (FileNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		int size = jrr.size();
+		
+		Object [][] filas = new Object[size][2];
+		
+		DefaultTableModel model = new DefaultTableModel();
+		tablePilotos.setModel(model);
+		
+		model.addColumn("Nombre");
+		model.addColumn("Numero");
+		
+		for(int i=0; i<size; i++) {
+			int suma = 0;
+			JSONObject row = (JSONObject) jrr.get(i);
+			String nombre = (String) row.get("piloto");
+			filas[i][0] = nombre;
+			filas[i][1] = 0;
+			for(int j=1; j<22; j++) {
+				String numCirc = String.valueOf(j) + " GP";
+				String points = (String) row.get(numCirc);
+				int pointsInt = Integer.valueOf(points);
+				switch(pointsInt) {
+				case 1:
+					suma +=25;
+				break;
+				case 2:
+					suma +=18;
+				break;
+				case 3:
+					suma +=15;
+				break;
+				case 4:
+					suma +=10;
+				break;
+				case 5:
+					suma +=8;
+				break;
+				case 6:
+					suma +=6;
+				break;
+				case 7:
+					suma +=5;
+				break;
+				case 8:
+					suma +=3;
+				break;
+				case 9:
+					suma +=2;
+				break;
+				case 10:
+					suma +=1;
+				break;
+				}
+			}
+			filas[i][1] += String.valueOf(suma);
+			model.addRow(filas[i]);
+		}	
 	}
 }

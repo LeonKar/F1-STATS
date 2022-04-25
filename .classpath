@@ -6,10 +6,10 @@
 			<attribute name="module" value="true"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry kind="lib" path="C:/Users/Leon/Downloads/F1 Interface/F1/jackson-annotations-2.13.2.jar"/>
-	<classpathentry kind="lib" path="C:/Users/Leon/Downloads/F1 Interface/F1/jackson-core-2.13.2.jar"/>
-	<classpathentry kind="lib" path="C:/Users/Leon/Downloads/F1 Interface/F1/jackson-databind-2.13.2.jar"/>
-	<classpathentry kind="lib" path="C:/Users/Leon/Downloads/F1 Interface/F1/json-simple-1.1.1.jar"/>
-	<classpathentry kind="lib" path="C:/Users/Leon/Downloads/F1 Interface/F1/gson-2.8.2.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Leon/eclipse-workspace/F1-STATS/gson-2.8.2.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Leon/eclipse-workspace/F1-STATS/jackson-annotations-2.13.2.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Leon/eclipse-workspace/F1-STATS/jackson-core-2.13.2.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Leon/eclipse-workspace/F1-STATS/jackson-databind-2.13.2.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Leon/eclipse-workspace/F1-STATS/json-simple-1.1.1.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

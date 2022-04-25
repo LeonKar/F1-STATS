@@ -32,6 +32,8 @@ import com.google.gson.*;
 import model.User;
 
 public class Main {
+	public static String nickname = "";
+	
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 		EventQueue.invokeLater(new Runnable() {
@@ -103,6 +105,7 @@ public class Main {
 				}
 				check = true;
 			}
+			nickname = login;
 		}
 		if(!check) {
 			JOptionPane.showMessageDialog(null, "Login o password incorrecto, prueba de nuevo", "InfoBox: " + "Error", JOptionPane.INFORMATION_MESSAGE);
@@ -112,11 +115,7 @@ public class Main {
 	@SuppressWarnings("unchecked")
 	public static void registrarse(String login, String password) throws IOException {
 		boolean newUser = true;
-		/*
-        if(login.equals(usr)) {
-			JOptionPane.showMessageDialog(null, "Usuario con este nombre ya existe", "InfoBox: " + "Error", JOptionPane.INFORMATION_MESSAGE);
-			newUser = false;
-        }*/
+		
 		if(newUser) {
 			JSONObject obj = new JSONObject();
 			JSONArray jrr = new JSONArray();
