@@ -229,6 +229,7 @@ public class WindowMenuUser extends JFrame{
 				panelMultiple.revalidate();
 				panelClasificacion.setVisible(true);
 				panelMultiple.add(panelClasificacion);
+				//tablaClasificacion();
 			}
 		});
 		panelClasificacionMenu.setLayout(null);
