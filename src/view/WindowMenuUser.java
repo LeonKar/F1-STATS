@@ -5,6 +5,8 @@ import javax.swing.JPanel;
 import java.awt.Color;
 
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+
 import java.awt.Font;
 import javax.swing.SwingConstants;
 import javax.swing.table.DefaultTableModel;
@@ -30,6 +32,7 @@ import javax.swing.JTable;
 import javax.swing.JTextField;
 import javax.swing.JRadioButtonMenuItem;
 import javax.swing.JComboBox;
+import java.awt.FlowLayout;
 
 public class WindowMenuUser extends JFrame{
 	public JPanel panelMultiple;
@@ -38,6 +41,7 @@ public class WindowMenuUser extends JFrame{
 	JPanel panelTablePilotos;
 	JPanel panelTableCarreras;
 	JPanel panelPerfilUsuario;
+	JPanel panelClasificacion;
 	JComboBox comboBox;
 	String []cmbxSexo = {"HOMBRE", "MUJER"};
 	String nombre;
@@ -47,6 +51,7 @@ public class WindowMenuUser extends JFrame{
 	private JTextField txtApellido;
 	private JTextField txtCorreo;
 	private JTextField txtFechaN;
+	private JTable tableInfo;
 	
 	@SuppressWarnings("serial")
 	public WindowMenuUser() throws IOException {
@@ -104,7 +109,7 @@ public class WindowMenuUser extends JFrame{
 			
 		});
 		panelPerfil.setBackground(new Color(20, 91, 173));
-		panelPerfil.setBounds(0, 149, 270, 60);
+		panelPerfil.setBounds(0, 210, 270, 60);
 		panelMenu.add(panelPerfil);
 		panelPerfil.setLayout(null);
 		
@@ -136,7 +141,7 @@ public class WindowMenuUser extends JFrame{
 			}
 		});
 		panelCarreras.setBackground(new Color(20, 91, 173));
-		panelCarreras.setBounds(0, 210, 270, 60);
+		panelCarreras.setBounds(0, 271, 270, 60);
 		panelMenu.add(panelCarreras);
 		panelCarreras.setLayout(null);
 		
@@ -169,7 +174,7 @@ public class WindowMenuUser extends JFrame{
 			}
 		});
 		panelPilotos.setBackground(new Color(20, 91, 173));
-		panelPilotos.setBounds(0, 271, 270, 60);
+		panelPilotos.setBounds(0, 332, 270, 60);
 		panelMenu.add(panelPilotos);
 		panelPilotos.setLayout(null);
 		
@@ -196,7 +201,7 @@ public class WindowMenuUser extends JFrame{
 			}
 		});
 		panelExit.setBackground(new Color(20, 91, 173));
-		panelExit.setBounds(0, 332, 270, 60);
+		panelExit.setBounds(0, 454, 270, 60);
 		panelMenu.add(panelExit);
 		panelExit.setLayout(null);
 		
@@ -206,6 +211,63 @@ public class WindowMenuUser extends JFrame{
 		lblNewLabel_1_1_1_1.setFont(new Font("Ebrima", Font.BOLD, 16));
 		lblNewLabel_1_1_1_1.setBounds(0, 0, 270, 60);
 		panelExit.add(lblNewLabel_1_1_1_1);
+		
+		JPanel panelClasificacionMenu = new JPanel();
+		panelClasificacionMenu.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseEntered(MouseEvent e) {
+				panelClasificacionMenu.setBackground(new Color(20, 101, 193));
+			}
+			@Override
+			public void mouseExited(MouseEvent e) {
+				panelClasificacionMenu.setBackground(new Color(20, 91, 173));
+			}
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				panelMultiple.removeAll();
+				panelMultiple.repaint();
+				panelMultiple.revalidate();
+				panelClasificacion.setVisible(true);
+				panelMultiple.add(panelClasificacion);
+			}
+		});
+		panelClasificacionMenu.setLayout(null);
+		panelClasificacionMenu.setBackground(new Color(20, 91, 173));
+		panelClasificacionMenu.setBounds(0, 149, 270, 60);
+		panelMenu.add(panelClasificacionMenu);
+		
+		JLabel lblClasificacion = new JLabel("CLASIFICACIÓN");
+		lblClasificacion.setHorizontalAlignment(SwingConstants.CENTER);
+		lblClasificacion.setForeground(Color.WHITE);
+		lblClasificacion.setFont(new Font("Ebrima", Font.BOLD, 16));
+		lblClasificacion.setBounds(0, 0, 270, 60);
+		panelClasificacionMenu.add(lblClasificacion);
+		
+		JPanel panelCaracteristicas = new JPanel();
+		panelCaracteristicas.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseEntered(MouseEvent e) {
+				panelCaracteristicas.setBackground(new Color(20, 101, 193));
+			}
+			@Override
+			public void mouseExited(MouseEvent e) {
+				panelCaracteristicas.setBackground(new Color(20, 91, 173));
+			}
+			@Override
+			public void mouseClicked(MouseEvent e) {
+			}
+		});
+		panelCaracteristicas.setLayout(null);
+		panelCaracteristicas.setBackground(new Color(20, 91, 173));
+		panelCaracteristicas.setBounds(0, 393, 270, 60);
+		panelMenu.add(panelCaracteristicas);
+		
+		JLabel lblCaracteristicas = new JLabel("CARACTERISTICAS");
+		lblCaracteristicas.setHorizontalAlignment(SwingConstants.CENTER);
+		lblCaracteristicas.setForeground(Color.WHITE);
+		lblCaracteristicas.setFont(new Font("Ebrima", Font.BOLD, 16));
+		lblCaracteristicas.setBounds(0, 0, 270, 60);
+		panelCaracteristicas.add(lblCaracteristicas);
 		
 		panelMultiple = new JPanel();
 		panelMultiple.setBackground(Color.WHITE);
@@ -276,38 +338,6 @@ public class WindowMenuUser extends JFrame{
 			}
 		});
 		scrollPanePilotos.setViewportView(tablePilotos);
-		
-		JPanel panelResultados = new JPanel();
-		panelResultados.addMouseListener(new MouseAdapter() {
-			@Override
-			public void mouseEntered(MouseEvent e) {
-				panelResultados.setBackground(new Color(20, 101, 193));
-			}
-			@Override
-			public void mouseExited(MouseEvent e) {
-				panelResultados.setBackground(new Color(20, 91, 173));
-			}
-			@Override
-			public void mouseClicked(MouseEvent e) {
-				panelMultiple.removeAll();
-				panelMultiple.repaint();
-				panelMultiple.revalidate(); 
-				panelTablePilotos.setVisible(true);
-				panelMultiple.add(panelTablePilotos);
-				tablaResultados();
-			}
-		});
-		panelResultados.setLayout(null);
-		panelResultados.setBackground(new Color(20, 91, 173));
-		panelResultados.setBounds(10, 171, 170, 44);
-		panelTablePilotos.add(panelResultados);
-		
-		JLabel lblResultados = new JLabel("RESULTADOS");
-		lblResultados.setHorizontalAlignment(SwingConstants.CENTER);
-		lblResultados.setForeground(Color.WHITE);
-		lblResultados.setFont(new Font("Ebrima", Font.BOLD, 16));
-		lblResultados.setBounds(0, 0, 170, 44);
-		panelResultados.add(lblResultados);
 		
 		panelTableCarreras = new JPanel();
 		panelTableCarreras.setBounds(0, 0, 515, 561);
@@ -543,6 +573,7 @@ public class WindowMenuUser extends JFrame{
 					// TODO Auto-generated catch block
 					e1.printStackTrace();
 				}
+				JOptionPane.showMessageDialog(null, "Guardado", "InfoBox: " + "Success", JOptionPane.INFORMATION_MESSAGE);
 			}
 		});
 		panelGuardar.setLayout(null);
@@ -566,6 +597,65 @@ public class WindowMenuUser extends JFrame{
 		separatorNombre_1_1_1_1.setBackground(Color.BLACK);
 		separatorNombre_1_1_1_1.setBounds(189, 313, 170, 2);
 		panelPerfilUsuario.add(separatorNombre_1_1_1_1);
+		
+		panelClasificacion = new JPanel();
+		panelClasificacion.setBackground(Color.WHITE);
+		panelClasificacion.setBounds(0, 0, 515, 561);
+		panelMultiple.add(panelClasificacion);
+		panelClasificacion.setLayout(null);
+		panelClasificacion.setVisible(false);
+		
+		JPanel panel_4_1_1_1 = new JPanel();
+		panel_4_1_1_1.setBounds(0, 41, 515, 120);
+		panel_4_1_1_1.setBackground(new Color(25, 118, 209));
+		panelClasificacion.add(panel_4_1_1_1);
+		panel_4_1_1_1.setLayout(null);
+		
+		JLabel lblNewLabel_3_1_1_1 = new JLabel("CLASIFICACIÓN");
+		lblNewLabel_3_1_1_1.setBounds(0, 0, 515, 119);
+		lblNewLabel_3_1_1_1.setHorizontalAlignment(SwingConstants.CENTER);
+		lblNewLabel_3_1_1_1.setForeground(Color.WHITE);
+		lblNewLabel_3_1_1_1.setFont(new Font("Ebrima", Font.BOLD, 18));
+		panel_4_1_1_1.add(lblNewLabel_3_1_1_1);
+		
+		JScrollPane scrollPaneClasificacion = new JScrollPane();
+		scrollPaneClasificacion.setBounds(10, 226, 495, 324);
+		panelClasificacion.add(scrollPaneClasificacion);
+		
+		tableInfo = new JTable();
+		scrollPaneClasificacion.setColumnHeaderView(tableInfo);
+		
+		JPanel panelInfo = new JPanel();
+		panelInfo.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseEntered(MouseEvent e) {
+				panelInfo.setBackground(new Color(20, 101, 193));
+			}
+			@Override
+			public void mouseExited(MouseEvent e) {
+				panelInfo.setBackground(new Color(20, 91, 173));
+			}
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				panelMultiple.removeAll();
+				panelMultiple.repaint();
+				panelMultiple.revalidate(); 
+				panelClasificacion.setVisible(true);
+				panelMultiple.add(panelClasificacion);
+				tablaInfo();
+			}
+		});
+		panelInfo.setLayout(null);
+		panelInfo.setBackground(new Color(20, 91, 173));
+		panelInfo.setBounds(10, 171, 170, 44);
+		panelClasificacion.add(panelInfo);
+		
+		JLabel lblResultados_1 = new JLabel("INFO");
+		lblResultados_1.setHorizontalAlignment(SwingConstants.CENTER);
+		lblResultados_1.setForeground(Color.WHITE);
+		lblResultados_1.setFont(new Font("Ebrima", Font.BOLD, 16));
+		lblResultados_1.setBounds(0, 0, 170, 44);
+		panelInfo.add(lblResultados_1);
 		
 		panel_2 = new JPanel();
 		panel_2.setBackground(Color.MAGENTA);
@@ -714,7 +804,7 @@ public class WindowMenuUser extends JFrame{
 		}
 	}
 
-	public void tablaResultados() {
+	public void tablaInfo() {
 		JSONObject obj = new JSONObject();
 		JSONArray jrr = new JSONArray();
 		Object ob = null;
@@ -741,7 +831,7 @@ public class WindowMenuUser extends JFrame{
 		Object [][] filas = new Object[size][2];
 		
 		DefaultTableModel model = new DefaultTableModel();
-		tablePilotos.setModel(model);
+		tableInfo.setModel(model);
 		
 		model.addColumn("Nombre");
 		model.addColumn("Numero");
