@@ -16,8 +16,10 @@ import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
 
+import control.AdminFunctions;
 import control.Connection;
 import control.Main;
+import control.UserFunctions;
 
 import javax.swing.JSeparator;
 import java.awt.event.MouseAdapter;
@@ -42,6 +44,7 @@ public class WindowMenuUser extends JFrame{
 	JPanel panelTableCarreras;
 	JPanel panelPerfilUsuario;
 	JPanel panelClasificacion;
+	JPanel panelCaracteristicas;
 	JComboBox comboBox;
 	String []cmbxSexo = {"HOMBRE", "MUJER"};
 	String nombre;
@@ -52,6 +55,9 @@ public class WindowMenuUser extends JFrame{
 	private JTextField txtCorreo;
 	private JTextField txtFechaN;
 	private JTable tableInfo;
+	private JTable tableCaracteristicas;
+	
+	UserFunctions uf = new UserFunctions();
 	
 	@SuppressWarnings("serial")
 	public WindowMenuUser() throws IOException {
@@ -229,7 +235,7 @@ public class WindowMenuUser extends JFrame{
 				panelMultiple.revalidate();
 				panelClasificacion.setVisible(true);
 				panelMultiple.add(panelClasificacion);
-				//tablaClasificacion();
+				tablaClasificacion();
 			}
 		});
 		panelClasificacionMenu.setLayout(null);
@@ -237,38 +243,44 @@ public class WindowMenuUser extends JFrame{
 		panelClasificacionMenu.setBounds(0, 149, 270, 60);
 		panelMenu.add(panelClasificacionMenu);
 		
-		JLabel lblClasificacion = new JLabel("CLASIFICACIÓN");
+		JLabel lblClasificacion = new JLabel("CLASIFICACI\u00D3N");
 		lblClasificacion.setHorizontalAlignment(SwingConstants.CENTER);
 		lblClasificacion.setForeground(Color.WHITE);
 		lblClasificacion.setFont(new Font("Ebrima", Font.BOLD, 16));
 		lblClasificacion.setBounds(0, 0, 270, 60);
 		panelClasificacionMenu.add(lblClasificacion);
 		
-		JPanel panelCaracteristicas = new JPanel();
-		panelCaracteristicas.addMouseListener(new MouseAdapter() {
+		JPanel panelCaracteristicasMenu = new JPanel();
+		panelCaracteristicasMenu.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseEntered(MouseEvent e) {
-				panelCaracteristicas.setBackground(new Color(20, 101, 193));
+				panelCaracteristicasMenu.setBackground(new Color(20, 101, 193));
 			}
 			@Override
 			public void mouseExited(MouseEvent e) {
-				panelCaracteristicas.setBackground(new Color(20, 91, 173));
+				panelCaracteristicasMenu.setBackground(new Color(20, 91, 173));
 			}
 			@Override
 			public void mouseClicked(MouseEvent e) {
+				panelMultiple.removeAll();
+				panelMultiple.repaint();
+				panelMultiple.revalidate();
+				panelCaracteristicas.setVisible(true);
+				panelMultiple.add(panelCaracteristicas);
+				tablaCaracteristicas();
 			}
 		});
-		panelCaracteristicas.setLayout(null);
-		panelCaracteristicas.setBackground(new Color(20, 91, 173));
-		panelCaracteristicas.setBounds(0, 393, 270, 60);
-		panelMenu.add(panelCaracteristicas);
+		panelCaracteristicasMenu.setLayout(null);
+		panelCaracteristicasMenu.setBackground(new Color(20, 91, 173));
+		panelCaracteristicasMenu.setBounds(0, 393, 270, 60);
+		panelMenu.add(panelCaracteristicasMenu);
 		
 		JLabel lblCaracteristicas = new JLabel("CARACTERISTICAS");
 		lblCaracteristicas.setHorizontalAlignment(SwingConstants.CENTER);
 		lblCaracteristicas.setForeground(Color.WHITE);
 		lblCaracteristicas.setFont(new Font("Ebrima", Font.BOLD, 16));
 		lblCaracteristicas.setBounds(0, 0, 270, 60);
-		panelCaracteristicas.add(lblCaracteristicas);
+		panelCaracteristicasMenu.add(lblCaracteristicas);
 		
 		panelMultiple = new JPanel();
 		panelMultiple.setBackground(Color.WHITE);
@@ -532,42 +544,43 @@ public class WindowMenuUser extends JFrame{
 			public void mouseClicked(MouseEvent e) {
 				JSONObject obj = new JSONObject();
 				JSONArray jrr = new JSONArray();
-				JSONArray jrr2 = new JSONArray();
 				JSONParser jp = new JSONParser();
 				
 				try {
-					FileReader file = new FileReader("perfil.json");
+					FileReader file = new FileReader("userbase.json");
 					jrr =  (JSONArray)jp.parse(file);
 				} catch (ParseException | IOException e1) {
 					// TODO Auto-generated catch block
 					e1.printStackTrace();
 				}
-				
-				int size = jrr.size();
-				for(int i=0; i<size; i++) {
+
+				for(int i=0; i<jrr.size(); i++) {
 					JSONObject row = (JSONObject) jrr.get(i);
-					String nick = (String) row.get("nick");
-					if(nick!=null) {
-						if(nick.equals(Main.nickname)) {
-						jrr.remove(i);
+					String nick = (String) row.get("username");
+					if(nick.equals(Main.nickname)) {
+						String password = (String) row.get("password");
+						obj.put("password", password);
+						obj.put("role", "user");
+						obj.put("username", Main.nickname);
+						obj.put("correo", txtCorreo.getText());
+						if(comboBox.getSelectedItem().equals("HOMBRE")) {
+							obj.put("sexo", "hombre");
+						}else if(comboBox.getSelectedItem().equals("MUJER")){
+							obj.put("sexo", "mujer");
+						}
+						obj.put("fecha_nacim", txtFechaN.getText());
+						obj.put("nombre", txtNombre.getText());
+						obj.put("apellido", txtApellido.getText());
+						
+						if(nick!=null) {
+							jrr.remove(i);
 						}
 					}
 				}
-				obj.put("nickname", Main.nickname);
-				obj.put("nombre", txtNombre.getText());
-				obj.put("apellido", txtApellido.getText());
-				System.out.println(comboBox.getSelectedItem());
-				if(comboBox.getSelectedItem().equals("HOMBRE")) {
-					obj.put("sexo", "hombre");
-				}else if(comboBox.getSelectedItem().equals("MUJER")){
-					obj.put("sexo", "mujer");
-				}
-				obj.put("correo", txtCorreo.getText());
-				obj.put("fecha_nacim", txtFechaN.getText());
 				jrr.add(obj);
 				
 				try {
-					FileWriter file = new FileWriter("perfil.json");
+					FileWriter file = new FileWriter("userbase.json");
 					file.write(jrr.toJSONString());
 					file.close();
 				} catch (IOException e1) {
@@ -612,7 +625,7 @@ public class WindowMenuUser extends JFrame{
 		panelClasificacion.add(panel_4_1_1_1);
 		panel_4_1_1_1.setLayout(null);
 		
-		JLabel lblNewLabel_3_1_1_1 = new JLabel("CLASIFICACIÓN");
+		JLabel lblNewLabel_3_1_1_1 = new JLabel("CLASIFICACI\u00D3N");
 		lblNewLabel_3_1_1_1.setBounds(0, 0, 515, 119);
 		lblNewLabel_3_1_1_1.setHorizontalAlignment(SwingConstants.CENTER);
 		lblNewLabel_3_1_1_1.setForeground(Color.WHITE);
@@ -623,8 +636,14 @@ public class WindowMenuUser extends JFrame{
 		scrollPaneClasificacion.setBounds(10, 226, 495, 324);
 		panelClasificacion.add(scrollPaneClasificacion);
 		
-		tableInfo = new JTable();
-		scrollPaneClasificacion.setColumnHeaderView(tableInfo);
+		tableInfo = new JTable(){
+			@SuppressWarnings("unused")
+			public boolean isCellEditable(int row, int column) {
+			    return false;
+			}
+		};
+		tableInfo.setSelectionBackground(new Color(25, 118, 209));
+		scrollPaneClasificacion.setViewportView(tableInfo);
 		
 		JPanel panelInfo = new JPanel();
 		panelInfo.addMouseListener(new MouseAdapter() {
@@ -658,10 +677,44 @@ public class WindowMenuUser extends JFrame{
 		lblResultados_1.setBounds(0, 0, 170, 44);
 		panelInfo.add(lblResultados_1);
 		
+		panelCaracteristicas = new JPanel();
+		panelCaracteristicas.setBackground(Color.WHITE);
+		panelCaracteristicas.setBounds(0, 0, 515, 561);
+		panelMultiple.add(panelCaracteristicas);
+		panelCaracteristicas.setLayout(null);
+		
+		JPanel panel_4_1_1_1_1 = new JPanel();
+		panel_4_1_1_1_1.setLayout(null);
+		panel_4_1_1_1_1.setBackground(new Color(25, 118, 209));
+		panel_4_1_1_1_1.setBounds(0, 41, 515, 120);
+		panelCaracteristicas.add(panel_4_1_1_1_1);
+		
+		JLabel lblNewLabel_3_1_1_1_1 = new JLabel("CARACTERISTICAS DE COCHES");
+		lblNewLabel_3_1_1_1_1.setHorizontalAlignment(SwingConstants.CENTER);
+		lblNewLabel_3_1_1_1_1.setForeground(Color.WHITE);
+		lblNewLabel_3_1_1_1_1.setFont(new Font("Ebrima", Font.BOLD, 18));
+		lblNewLabel_3_1_1_1_1.setBounds(0, 0, 515, 119);
+		panel_4_1_1_1_1.add(lblNewLabel_3_1_1_1_1);
+		
+		JScrollPane scrollPaneCaracteristicas = new JScrollPane();
+		scrollPaneCaracteristicas.setBounds(10, 226, 495, 324);
+		panelCaracteristicas.add(scrollPaneCaracteristicas);
+		panelCaracteristicas.setVisible(false);
+		
+		tableCaracteristicas = new JTable(){
+			@SuppressWarnings("unused")
+			public boolean isCellEditable(int row, int column) {
+			    return false;
+			}
+		};
+		tableCaracteristicas.setSelectionBackground(new Color(25, 118, 209));
+		scrollPaneCaracteristicas.setViewportView(tableCaracteristicas);
+		
 		panel_2 = new JPanel();
 		panel_2.setBackground(Color.MAGENTA);
 		panel_2.setBounds(0, 0, 515, 561);
 	}
+		
 	public void tablaPilotos() {
 		JSONObject obj = new JSONObject();
 		JSONArray jrr = new JSONArray();
@@ -773,7 +826,7 @@ public class WindowMenuUser extends JFrame{
 		JSONParser jp = new JSONParser();
 		
 		try {
-			FileReader file = new FileReader("perfil.json");
+			FileReader file = new FileReader("userbase.json");
 			jrr =  (JSONArray)jp.parse(file);
 		} catch (ParseException | IOException e) {
 			// TODO Auto-generated catch block
@@ -784,23 +837,30 @@ public class WindowMenuUser extends JFrame{
 		
 		for(int i=0; i<size; i++) {
 			JSONObject row = (JSONObject) jrr.get(i);
-			String name = (String) row.get("nickname");
-			System.out.println("N " + name + "MN" + Main.nickname);
+			String name = (String) row.get("username");
 			if(name.equals(Main.nickname)) {
 				String nameU = (String) row.get("nombre");
 				String apellidoU = (String) row.get("apellido");
 				String sexo = (String) row.get("sexo");
 				String correoU = (String) row.get("correo");
 				String fecha_nacimU = (String) row.get("fecha_nacim");
-				txtNombre.setText(nameU);
-				txtApellido.setText(apellidoU);
-				if(sexo.equals("mujer")) {
-					comboBox.setSelectedIndex(1);
-				}else {
-					comboBox.setSelectedIndex(0);
+				if(nameU != null) {
+					txtNombre.setText(nameU);
+				}
+				if(nameU != null) {
+					txtApellido.setText(apellidoU);
+				}
+				if(sexo != null) {
+					if(sexo.equals("mujer")) {
+						comboBox.setSelectedIndex(1);
+					}else {
+						comboBox.setSelectedIndex(0);
+					}
 				}
 				txtCorreo.setText(correoU);
-				txtFechaN.setText(fecha_nacimU);
+				if(fecha_nacimU != null) {
+					txtFechaN.setText(fecha_nacimU);
+				}
 			}
 		}
 	}
@@ -883,5 +943,114 @@ public class WindowMenuUser extends JFrame{
 			filas[i][1] += String.valueOf(suma);
 			model.addRow(filas[i]);
 		}	
+	}
+	public void tablaClasificacion() {
+		JSONObject obj = new JSONObject();
+		JSONArray jrr = new JSONArray();
+		Object ob = null;
+		JSONParser jp = new JSONParser();
+		
+		try {
+			FileReader file = new FileReader("mejores_tiempos_circuitos.json");
+			ob = jp.parse(file);
+			jrr=(JSONArray) ob;
+			file.close();
+		} catch (ParseException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (FileNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		int size = jrr.size();
+		
+		DefaultTableModel model = new DefaultTableModel();
+		tableInfo.setModel(model);
+		
+		model.addColumn("Nombre circuito");
+		model.addColumn("Piloto");
+		model.addColumn("Tiempo");
+		model.addColumn("Año");
+		
+		Object [] filas = new Object[size];
+		
+		for(int i=0; i<size; i++) {
+			JSONObject row = (JSONObject) jrr.get(i);
+			String nombre_circuito = (String) row.get("nombre_circuito");
+			String piloto = (String) row.get("Piloto");
+			String tiempo = (String) row.get("Tiempo");
+			String ano = (String) row.get("A�o");
+			filas[0] = nombre_circuito;
+			filas[1] = piloto;
+			filas[2] = tiempo;
+			filas[3] = ano;
+			model.addRow(filas);
+		}
+	}
+	public void tablaCaracteristicas() {
+		JSONObject obj = new JSONObject();
+		JSONArray jrr = new JSONArray();
+		Object ob = null;
+		JSONParser jp = new JSONParser();
+		
+		try {
+			FileReader file = new FileReader("especificaciones_coche.json");
+			ob = jp.parse(file);
+			jrr=(JSONArray) ob;
+			file.close();
+		} catch (ParseException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (FileNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		int size = jrr.size();
+		
+		DefaultTableModel model = new DefaultTableModel();
+		tableCaracteristicas.setModel(model);
+		
+		model.addColumn("Nombre circuito");
+		model.addColumn("Motor");
+		model.addColumn("Peso");
+		model.addColumn("Carroceria");
+		model.addColumn("Frenos");
+		model.addColumn("Caja de cambios");
+		model.addColumn("Suspension delantera");
+		model.addColumn("Suspension trasera");
+		model.addColumn("Ruedas");
+		
+		Object [] filas = new Object[size];
+		
+		for(int i=0; i<size; i++) {
+			JSONObject row = (JSONObject) jrr.get(i);
+			String nombre = (String) row.get("Nombre");
+			String motor = (String) row.get("Motor");
+			String tiempo = (String) row.get("Peso");
+			String carroceria = (String) row.get("Carroceria");
+			String frenos = (String) row.get("Frenos");
+			String caja_cambios = (String) row.get("Caja de cambios");
+			String suspension_delantera = (String) row.get("Suspension delantera");
+			String suspension_trasera = (String) row.get("Suspension trasera");
+			String ruedas = (String) row.get("Ruedas");
+			filas[0] = nombre;
+			filas[1] = motor;
+			filas[2] = tiempo;
+			filas[3] = carroceria;
+			filas[4] = frenos;
+			filas[5] = caja_cambios;
+			filas[6] = suspension_delantera;
+			filas[7] = suspension_trasera;
+			filas[8] = ruedas;
+			model.addRow(filas);
+		}
 	}
 }

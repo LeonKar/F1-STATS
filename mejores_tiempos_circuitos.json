@@ -1,6 +1,4 @@
-{
-"Mejores_tiempos":[
-	
+[
 	{"nombre_circuito":"Sakhir",
 	"Piloto":"Lewis Hamilton",
 	"Tiempo":"1:27.264 ",
@@ -131,7 +129,5 @@
 	"Piloto":"Lewis Hamilton",
 	"Tiempo":"1:39.283 ",
 	"Año":"2019"
-	},
-	
+	}
   ]
-}

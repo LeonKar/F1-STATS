@@ -3,12 +3,15 @@ package control;
 import java.awt.EventQueue;
 
 import java.io.IOException;
-import java.io.Writer;
-import java.nio.charset.StandardCharsets;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.nio.file.Paths;
+import java.util.Properties;
 
+import javax.mail.Message;
+import javax.mail.MessagingException;
+import javax.mail.PasswordAuthentication;
+import javax.mail.Session;
+import javax.mail.Transport;
+import javax.mail.internet.InternetAddress;
+import javax.mail.internet.MimeMessage;
 import javax.swing.JOptionPane;
 
 import org.json.simple.JSONArray;
@@ -19,17 +22,9 @@ import org.json.simple.parser.ParseException;
 import view.WindowLogin;
 import view.WindowMenuUser;
 import view.WindowMenuAdmin;
-import com.fasterxml.jackson.databind.JsonNode;
-import com.fasterxml.jackson.databind.ObjectMapper;
-import com.fasterxml.jackson.databind.node.ArrayNode;
-import com.fasterxml.jackson.databind.node.ObjectNode;
-import java.io.File;
 import java.io.FileReader;
 import java.io.FileWriter;
 
-import com.google.gson.*;
-
-import model.User;
 
 public class Main {
 	public static String nickname = "";
@@ -113,7 +108,7 @@ public class Main {
 	}
 	
 	@SuppressWarnings("unchecked")
-	public static void registrarse(String login, String password) throws IOException {
+	public static void registrarse(String login, String correo, String password) throws IOException {
 		boolean newUser = true;
 		
 		if(newUser) {
@@ -132,6 +127,7 @@ public class Main {
 			
 			obj.put("username", login);
 			obj.put("password", password);
+			obj.put("correo", correo);
 			obj.put("role", "user");
 			
 			int size = jrr.size();
@@ -154,6 +150,12 @@ public class Main {
 					file.write(jrr.toJSONString());
 					file.close();
 				} catch (IOException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
+				try {
+					SendEmail.correoRegistro(login, password, correo);
+				} catch (MessagingException e1) {
 					// TODO Auto-generated catch block
 					e1.printStackTrace();
 				}
@@ -181,5 +183,39 @@ public class Main {
 		// TODO Auto-generated method stub
 		Connection mc = new Connection();
 		//mc.modificarPiloto(idpiloto, numero, nombre, equipo, nacionalidad, fecha_nacim, campeonatos_ganados);
+	}
+	public static void sendEmail() {
+		final String username = "proyecto.f1stats@gmail.com";
+        final String password = "F1StatsUem";
+
+        Properties prop = new Properties();
+        prop.put("mail.smtp.auth", "true");
+        prop.put("mail.smtp.starttls.enable", "true");
+		prop.put("mail.smtp.host", "smtp.gmail.com");
+        prop.put("mail.smtp.port", "587");
+        
+        Session session = Session.getInstance(prop,
+                new javax.mail.Authenticator() {
+                    protected PasswordAuthentication getPasswordAuthentication() {
+                        return new PasswordAuthentication(username, password);
+                    }
+                });
+
+        try {
+
+            Message message = new MimeMessage(session);
+            message.setFrom(new InternetAddress("proyecto.f1stats@gmail.com"));
+            message.setRecipients(
+                    Message.RecipientType.TO,
+                    InternetAddress.parse("l.karagishev@gmail.com")
+            );
+            message.setSubject("Testing Gmail SSL");
+            message.setText("Dear Mail Crawler,"
+                    + "\n\n Please do not spam my email!");
+
+            Transport.send(message);
+        } catch (MessagingException e) {
+            e.printStackTrace();
+        }
 	}
 }

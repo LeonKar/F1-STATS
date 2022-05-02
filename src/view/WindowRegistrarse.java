@@ -37,6 +37,8 @@ public class WindowRegistrarse extends JFrame {
 	private JSeparator separator_1;
 	private JLabel lblNewLabel_2;
 	private JSeparator separator_2;
+	private JLabel lblCorreo;
+	private JTextField txtCorreo;
 
 	public WindowRegistrarse() {
 		super();
@@ -66,13 +68,17 @@ public class WindowRegistrarse extends JFrame {
 					txtConfirmarPassword.setText("********");
 					txtConfirmarPassword.setForeground(Color.gray);
 				}
+				if(txtCorreo.getText().isEmpty()) {
+					txtCorreo.setText("Ingrese su correo electronico");
+					txtCorreo.setForeground(Color.gray);
+				}
 			}
 		});
 		
 		txtUsername.setForeground(Color.GRAY);
 		txtUsername.setText("Ingrese su nombre de usuario");
 		txtUsername.setBorder(null);
-		txtUsername.setBounds(222, 211, 226, 20);
+		txtUsername.setBounds(222, 155, 226, 20);
 		contentPane.add(txtUsername);
 		txtUsername.setColumns(10);
 		
@@ -92,7 +98,11 @@ public class WindowRegistrarse extends JFrame {
 				if(String.valueOf(((JPasswordField) txtConfirmarPassword).getPassword()).isEmpty()) {
 					txtConfirmarPassword.setText("********");
 					txtConfirmarPassword.setForeground(Color.gray);
-				}	
+				}
+				if(txtCorreo.getText().isEmpty()) {
+					txtCorreo.setText("Ingrese su correo electronico");
+					txtCorreo.setForeground(Color.gray);
+				}
 			}
 		});
 		txtPassword.setForeground(Color.GRAY);
@@ -104,12 +114,12 @@ public class WindowRegistrarse extends JFrame {
 		
 		lblRegistrarse = new JLabel("REGISTRARSE");
 		lblRegistrarse.setFont(new Font("Ebrima", Font.BOLD, 16));
-		lblRegistrarse.setBounds(222, 120, 152, 14);
+		lblRegistrarse.setBounds(222, 75, 152, 14);
 		contentPane.add(lblRegistrarse);
 		
 		lblNewLabel = new JLabel("Usuario");
 		lblNewLabel.setFont(new Font("Ebrima", Font.BOLD, 14));
-		lblNewLabel.setBounds(221, 186, 70, 14);
+		lblNewLabel.setBounds(221, 130, 70, 14);
 		contentPane.add(lblNewLabel);
 		
 		btnRegistrarse = new Panel();
@@ -117,19 +127,20 @@ public class WindowRegistrarse extends JFrame {
 		btnRegistrarse.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				if(txtUsername.getText().length() < 4 || String.valueOf(((JPasswordField) txtPassword).getPassword()).length() < 4) {
+				if(txtUsername.getText().length() < 4 || txtCorreo.getText().length() < 4 || String.valueOf(((JPasswordField) txtPassword).getPassword()).length() < 4) {
 					JOptionPane.showMessageDialog(null, "Numero de caracteres no puede menor que 4", "InfoBox: " + "Error", JOptionPane.INFORMATION_MESSAGE);
-				}else if(txtUsername.getText().equals("Ingrese su nombre de usuario") || String.valueOf(((JPasswordField) txtPassword).getPassword()).equals("********")){
-					JOptionPane.showMessageDialog(null, "No has introducido login o contraseña", "InfoBox: " + "Error", JOptionPane.INFORMATION_MESSAGE);
+				}else if(txtUsername.getText().equals("Ingrese su nombre de usuario") || txtCorreo.getText().equals("Ingrese su correo electronico") || String.valueOf(((JPasswordField) txtPassword).getPassword()).equals("********")){
+					JOptionPane.showMessageDialog(null, "No has introducido login, contraseña o correo", "InfoBox: " + "Error", JOptionPane.INFORMATION_MESSAGE);
 				}else {
 					if((String.valueOf(((JPasswordField) txtPassword).getPassword())).equals(String.valueOf(((JPasswordField) txtConfirmarPassword).getPassword()))) {
 						try {
-							Main.registrarse(txtUsername.getText(), txtPassword.getText());
+							Main.registrarse(txtUsername.getText(), txtCorreo.getText(), txtPassword.getText());
 						} catch (IOException e1) {
 							// TODO Auto-generated catch block
 							e1.printStackTrace();
 						}
 						txtUsername.setText("");
+						txtCorreo.setText("");
 						txtPassword.setText("");
 						txtConfirmarPassword.setText("");
 						//closeFrame();
@@ -197,7 +208,11 @@ public class WindowRegistrarse extends JFrame {
 				if(String.valueOf(((JPasswordField) txtPassword).getPassword()).isEmpty()) {
 					txtPassword.setText("********");
 					txtPassword.setForeground(Color.gray);
-				}	
+				}
+				if(txtCorreo.getText().isEmpty()) {
+					txtCorreo.setText("Ingrese su correo electronico");
+					txtCorreo.setForeground(Color.gray);
+				}
 			}
 		});
 		txtConfirmarPassword.setText("********");
@@ -210,6 +225,46 @@ public class WindowRegistrarse extends JFrame {
 		separator_2.setBackground(Color.BLACK);
 		separator_2.setBounds(222, 342, 226, 2);
 		contentPane.add(separator_2);
+		
+		lblCorreo = new JLabel("Correo");
+		lblCorreo.setFont(new Font("Ebrima", Font.BOLD, 14));
+		lblCorreo.setBounds(221, 186, 70, 14);
+		contentPane.add(lblCorreo);
+		
+		txtCorreo = new JTextField();
+		txtCorreo.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				if(txtCorreo.getText().equals("Ingrese su correo electronico")) {
+					txtCorreo.setText("");
+					txtCorreo.setForeground(Color.black);
+				}
+				if(String.valueOf(((JPasswordField) txtPassword).getPassword()).isEmpty()) {
+					txtPassword.setText("********");
+					txtPassword.setForeground(Color.gray);
+				}	
+				if(String.valueOf(((JPasswordField) txtConfirmarPassword).getPassword()).isEmpty()) {
+					txtConfirmarPassword.setText("********");
+					txtConfirmarPassword.setForeground(Color.gray);
+				}
+				if(txtUsername.getText().isEmpty()) {
+					txtUsername.setText("Ingrese su nombre de usuario");
+					txtUsername.setForeground(Color.gray);
+				}
+			}
+		});
+		txtCorreo.setText("Ingrese su correo electronico");
+		txtCorreo.setForeground(Color.GRAY);
+		txtCorreo.setFont(new Font("Ebrima", Font.PLAIN, 16));
+		txtCorreo.setColumns(10);
+		txtCorreo.setBorder(null);
+		txtCorreo.setBounds(222, 211, 226, 20);
+		contentPane.add(txtCorreo);
+		
+		JSeparator separator_3 = new JSeparator();
+		separator_3.setBackground(Color.BLACK);
+		separator_3.setBounds(222, 174, 226, 2);
+		contentPane.add(separator_3);
 		
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 	}

@@ -14,6 +14,7 @@ import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
 
+import control.AdminFunctions;
 import control.Connection;
 
 import javax.swing.JSeparator;
@@ -35,6 +36,8 @@ public class WindowMenuAdmin extends JFrame{
 	JPanel btnEliminar;
 	private JTable table;
 	String nombre;
+	
+	AdminFunctions af = new AdminFunctions();
 	
 	@SuppressWarnings("serial")
 	public WindowMenuAdmin() throws IOException {
@@ -82,7 +85,6 @@ public class WindowMenuAdmin extends JFrame{
 			}
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				System.out.println("dssd");
 				panelMultiple.removeAll();
 				panelMultiple.repaint();
 				panelMultiple.revalidate(); 
@@ -321,45 +323,26 @@ public class WindowMenuAdmin extends JFrame{
 		panel_2.setBounds(0, 0, 515, 561);
 	}
 	public void tablaUsers() {
-		JSONObject obj = new JSONObject();
 		JSONArray jrr = new JSONArray();
-		Object ob = null;
-		JSONParser jp = new JSONParser();
-		
-		try {
-			FileReader file = new FileReader("userbase.json");
-			ob = jp.parse(file);
-			jrr=(JSONArray) ob;
-			file.close();
-		} catch (ParseException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (FileNotFoundException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		
+		jrr = af.leerFichero("userbase.json");
 		int size = jrr.size();
 		
 		DefaultTableModel model = new DefaultTableModel();
 		table.setModel(model);
 		
 		model.addColumn("Nombre");
-		model.addColumn("Password");
+		model.addColumn("Correo");
 		model.addColumn("Role");
 		
-		Object [] filas = new Object[size];
+		Object [] filas = new Object[3];
 		
 		for(int i=0; i<size; i++) {
 			JSONObject row = (JSONObject) jrr.get(i);
 			String name = (String) row.get("username");
-			String psswd = (String) row.get("password");
+			String correo = (String) row.get("correo");
 			String role = (String) row.get("role");
 			filas[0] = name;
-			filas[1] = psswd;
+			filas[1] = correo;
 			filas[2] = role;
 			model.addRow(filas);
 		}
