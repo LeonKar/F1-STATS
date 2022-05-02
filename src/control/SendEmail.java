@@ -20,7 +20,7 @@ public class SendEmail {
 
             protected PasswordAuthentication getPasswordAuthentication() {
 
-                return new PasswordAuthentication("proyecto.f1stats@gmail.com", "F1StatsUem");
+                return new PasswordAuthentication("proyecto.f1stats@gmail.com", "nqjlxpxwphflhisv");
 
             }
 
