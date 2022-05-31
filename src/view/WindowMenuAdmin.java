@@ -105,15 +105,15 @@ public class WindowMenuAdmin extends JFrame{
 		lblNewLabel_1.setBounds(0, 0, 270, 60);
 		panelUsers.add(lblNewLabel_1);
 		
-		JPanel panelAdministradores = new JPanel();
-		panelAdministradores.addMouseListener(new MouseAdapter() {
+		JPanel panelAnuncios = new JPanel();
+		panelAnuncios.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseEntered(MouseEvent e) {
-				panelAdministradores.setBackground(new Color(20, 101, 193));
+				panelAnuncios.setBackground(new Color(20, 101, 193));
 			}
 			@Override
 			public void mouseExited(MouseEvent e) {
-				panelAdministradores.setBackground(new Color(20, 91, 173));
+				panelAnuncios.setBackground(new Color(20, 91, 173));
 			}
 			@Override
 			public void mouseClicked(MouseEvent e) {
@@ -122,17 +122,17 @@ public class WindowMenuAdmin extends JFrame{
 				panelMultiple.revalidate();
 			}
 		});
-		panelAdministradores.setBackground(new Color(20, 91, 173));
-		panelAdministradores.setBounds(0, 210, 270, 60);
-		panelMenu.add(panelAdministradores);
-		panelAdministradores.setLayout(null);
+		panelAnuncios.setBackground(new Color(20, 91, 173));
+		panelAnuncios.setBounds(0, 210, 270, 60);
+		panelMenu.add(panelAnuncios);
+		panelAnuncios.setLayout(null);
 		
-		JLabel lblNewLabel_1_1 = new JLabel("GESTI\u00D3N DE ADMINISTRADORES");
+		JLabel lblNewLabel_1_1 = new JLabel("GESTI\u00D3N DE ANUNCIOS");
 		lblNewLabel_1_1.setHorizontalAlignment(SwingConstants.CENTER);
 		lblNewLabel_1_1.setForeground(Color.WHITE);
 		lblNewLabel_1_1.setFont(new Font("Ebrima", Font.BOLD, 16));
 		lblNewLabel_1_1.setBounds(0, 0, 270, 60);
-		panelAdministradores.add(lblNewLabel_1_1);
+		panelAnuncios.add(lblNewLabel_1_1);
 		
 		JPanel panelPilotos = new JPanel();
 		panelPilotos.addMouseListener(new MouseAdapter() {

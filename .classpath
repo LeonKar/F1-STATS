@@ -6,12 +6,12 @@
 			<attribute name="module" value="true"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry kind="lib" path="C:/Users/Leon/eclipse-workspace/F1-STATS-main/activation-1.1.jar"/>
-	<classpathentry kind="lib" path="C:/Users/Leon/eclipse-workspace/F1-STATS-main/gson-2.8.2.jar"/>
-	<classpathentry kind="lib" path="C:/Users/Leon/eclipse-workspace/F1-STATS-main/jackson-annotations-2.13.2.jar"/>
-	<classpathentry kind="lib" path="C:/Users/Leon/eclipse-workspace/F1-STATS-main/jackson-core-2.13.2.jar"/>
-	<classpathentry kind="lib" path="C:/Users/Leon/eclipse-workspace/F1-STATS-main/jackson-databind-2.13.2.jar"/>
-	<classpathentry kind="lib" path="C:/Users/Leon/eclipse-workspace/F1-STATS-main/javax.mail-1.6.2.jar"/>
-	<classpathentry kind="lib" path="C:/Users/Leon/eclipse-workspace/F1-STATS-main/json-simple-1.1.1.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Leon/Downloads/PrF1/F1-STATS1/activation-1.1.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Leon/Downloads/PrF1/F1-STATS1/gson-2.8.2.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Leon/Downloads/PrF1/F1-STATS1/jackson-annotations-2.13.2.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Leon/Downloads/PrF1/F1-STATS1/jackson-core-2.13.2.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Leon/Downloads/PrF1/F1-STATS1/jackson-databind-2.13.2.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Leon/Downloads/PrF1/F1-STATS1/javax.mail-1.6.2.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Leon/Downloads/PrF1/F1-STATS1/json-simple-1.1.1.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

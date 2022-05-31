@@ -42,7 +42,7 @@ public class SendEmail {
             message.setSubject("Bienvenido a F1 Stats!");
 
             // Now set the actual message
-            message.setText("Gracias por registrarte en la aplicación.\nLe recordamos sus datos de registro:\n\tUsuario: " + login + "\n\tContraseña: " + password +
+            message.setText("Gracias por registrarte en la aplicaciÃ³n.\nLe recordamos sus datos de registro:\n\tUsuario: " + login + "\n\tContraseÃ±a: " + password +
             		"\nUn abrazo de parte del equipo F1 Stats");
 
             // Send message

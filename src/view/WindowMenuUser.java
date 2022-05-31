@@ -235,7 +235,7 @@ public class WindowMenuUser extends JFrame{
 				panelMultiple.revalidate();
 				panelClasificacion.setVisible(true);
 				panelMultiple.add(panelClasificacion);
-				tablaClasificacion();
+				tablaInfo();
 			}
 		});
 		panelClasificacionMenu.setLayout(null);
@@ -311,6 +311,11 @@ public class WindowMenuUser extends JFrame{
 		lblBienvenido.setBounds(0, 0, 160, 44);
 		panelBnv.add(lblBienvenido);
 		lblBienvenido.setFont(new Font("Ebrima", Font.BOLD, 18));
+		
+		JLabel lblAnuncios = new JLabel("Horario");
+		lblAnuncios.setBounds(0, 0, 150, 30);
+		panelMultiple.add(lblAnuncios);
+		lblAnuncios.setFont(new Font("Ebrima", Font.BOLD, 18));
 		
 		panelTablePilotos = new JPanel();
 		panelTablePilotos.setBackground(Color.WHITE);
@@ -390,6 +395,38 @@ public class WindowMenuUser extends JFrame{
 			}
 		});
 		scrollPaneCarreras.setViewportView(tableCarreras);
+		
+		JPanel panelInfo = new JPanel();
+		panelInfo.setBounds(10, 171, 170, 44);
+		panelTableCarreras.add(panelInfo);
+		panelInfo.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseEntered(MouseEvent e) {
+				panelInfo.setBackground(new Color(20, 101, 193));
+			}
+			@Override
+			public void mouseExited(MouseEvent e) {
+				panelInfo.setBackground(new Color(20, 91, 173));
+			}
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				panelMultiple.removeAll();
+				panelMultiple.repaint();
+				panelMultiple.revalidate(); 
+				panelClasificacion.setVisible(true);
+				panelMultiple.add(panelClasificacion);
+				tablaClasificacion();
+			}
+		});
+		panelInfo.setLayout(null);
+		panelInfo.setBackground(new Color(20, 91, 173));
+		
+		JLabel lblResultados_1 = new JLabel("MEJORES TIEMPOS");
+		lblResultados_1.setHorizontalAlignment(SwingConstants.CENTER);
+		lblResultados_1.setForeground(Color.WHITE);
+		lblResultados_1.setFont(new Font("Ebrima", Font.BOLD, 16));
+		lblResultados_1.setBounds(0, 0, 170, 44);
+		panelInfo.add(lblResultados_1);
 		
 		panelPerfilUsuario = new JPanel();
 		panelPerfilUsuario.setBackground(Color.WHITE);
@@ -645,38 +682,6 @@ public class WindowMenuUser extends JFrame{
 		tableInfo.setSelectionBackground(new Color(25, 118, 209));
 		scrollPaneClasificacion.setViewportView(tableInfo);
 		
-		JPanel panelInfo = new JPanel();
-		panelInfo.addMouseListener(new MouseAdapter() {
-			@Override
-			public void mouseEntered(MouseEvent e) {
-				panelInfo.setBackground(new Color(20, 101, 193));
-			}
-			@Override
-			public void mouseExited(MouseEvent e) {
-				panelInfo.setBackground(new Color(20, 91, 173));
-			}
-			@Override
-			public void mouseClicked(MouseEvent e) {
-				panelMultiple.removeAll();
-				panelMultiple.repaint();
-				panelMultiple.revalidate(); 
-				panelClasificacion.setVisible(true);
-				panelMultiple.add(panelClasificacion);
-				tablaInfo();
-			}
-		});
-		panelInfo.setLayout(null);
-		panelInfo.setBackground(new Color(20, 91, 173));
-		panelInfo.setBounds(10, 171, 170, 44);
-		panelClasificacion.add(panelInfo);
-		
-		JLabel lblResultados_1 = new JLabel("INFO");
-		lblResultados_1.setHorizontalAlignment(SwingConstants.CENTER);
-		lblResultados_1.setForeground(Color.WHITE);
-		lblResultados_1.setFont(new Font("Ebrima", Font.BOLD, 16));
-		lblResultados_1.setBounds(0, 0, 170, 44);
-		panelInfo.add(lblResultados_1);
-		
 		panelCaracteristicas = new JPanel();
 		panelCaracteristicas.setBackground(Color.WHITE);
 		panelCaracteristicas.setBounds(0, 0, 515, 561);
@@ -895,7 +900,7 @@ public class WindowMenuUser extends JFrame{
 		tableInfo.setModel(model);
 		
 		model.addColumn("Nombre");
-		model.addColumn("Numero");
+		model.addColumn("Puntos");
 		
 		for(int i=0; i<size; i++) {
 			int suma = 0;
@@ -940,9 +945,19 @@ public class WindowMenuUser extends JFrame{
 				break;
 				}
 			}
+		
 			filas[i][1] += String.valueOf(suma);
 			model.addRow(filas[i]);
 		}	
+		Object [][] filas_ordenadas = new Object[size][2];
+		for(int i=0; i<size; i++) {
+			for(int j=0; j<size; j++) {
+				//if(Integer.parseInt(filas[i][1].toString())) {
+					
+				//}
+			}
+		}
+		
 	}
 	public void tablaClasificacion() {
 		JSONObject obj = new JSONObject();
@@ -983,7 +998,7 @@ public class WindowMenuUser extends JFrame{
 			String nombre_circuito = (String) row.get("nombre_circuito");
 			String piloto = (String) row.get("Piloto");
 			String tiempo = (String) row.get("Tiempo");
-			String ano = (String) row.get("Año");
+			String ano = (String) row.get("Aï¿½o");
 			filas[0] = nombre_circuito;
 			filas[1] = piloto;
 			filas[2] = tiempo;
